@@ -1,6 +1,5 @@
-var t;
+var t; 
 let colors = ['#8C7853'];
-
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -19,16 +18,23 @@ function draw() {
   var y2 = height * noise(t + 65);
   var y3 = height * noise(t + 75);
   var y4 = height * noise(t + 85);
+  
   let randomColor1 = random(colors);
-
-  stroke(randomColor1);
+  
+  // Extract the RGB components from the hex color
+  let r = red(randomColor1);
+  let g = green(randomColor1);
+  let b = blue(randomColor1);
+  
+  // Set the stroke with 10% transparency
+  stroke(r, g, b, 20); // 25 is 10% of 255
 
   bezier(x1, y1, x2, y2, x3, y3, x4, y4);
 
   t += 0.005;
 
-  // clear the background every 500 frames using mod (%) operator
+  // Clear the background every 500 frames using mod (%) operator
   if (frameCount % 500 == 0) {
-  clear();
+    clear();
   }
 }
